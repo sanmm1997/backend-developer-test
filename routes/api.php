@@ -17,3 +17,19 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['middleware' => ['cors'], 'prefix' => 'v1'], function () {
+
+    /**
+     *
+     * Manage JWT token
+     *
+     */
+    Route::post('auth/login', 'TokensController@login')->name('auth.login');
+
+    Route::group(['middleware' => ['jwt.auth']], function () {
+        Route::post('auth/refresh', 'TokensController@refresh')->name('auth.refresh');
+        Route::post('auth/expire', 'TokensController@expire')->name('auth.expire');
+    });
+
+});
