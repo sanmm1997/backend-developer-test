@@ -34687,12 +34687,13 @@ module.exports = g;
 /*!**************************************!*\
   !*** ./resources/js/api/usersApi.js ***!
   \**************************************/
-/*! exports provided: loginUser, getUsers, getUser, createUser, updateUser, deleteUser */
+/*! exports provided: loginUser, logoutUser, getUsers, getUser, createUser, updateUser, deleteUser */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loginUser", function() { return loginUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logoutUser", function() { return logoutUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getUsers", function() { return getUsers; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getUser", function() { return getUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createUser", function() { return createUser; });
@@ -34772,7 +34773,7 @@ var loginUser = /*#__PURE__*/function () {
     return _ref.apply(this, arguments);
   };
 }();
-var getUsers = /*#__PURE__*/function () {
+var logoutUser = /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
     var token, response;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
@@ -34782,35 +34783,36 @@ var getUsers = /*#__PURE__*/function () {
             _context2.prev = 0;
             token = Object(_utils_userUtils__WEBPACK_IMPORTED_MODULE_1__["loadJwtLocalStorage"])().token;
             _context2.next = 4;
-            return fetch("".concat(BASE_URL, "users"), getOption('GET', null, token));
+            return fetch("".concat(BASE_URL, "auth/expire"), getOption('POST', null, token));
 
           case 4:
             response = _context2.sent;
-            _context2.next = 7;
+            Object(_utils_userUtils__WEBPACK_IMPORTED_MODULE_1__["deleteJwtLocalStorage"])();
+            _context2.next = 8;
             return response.json();
 
-          case 7:
+          case 8:
             return _context2.abrupt("return", _context2.sent);
 
-          case 10:
-            _context2.prev = 10;
+          case 11:
+            _context2.prev = 11;
             _context2.t0 = _context2["catch"](0);
             console.error(_context2.t0);
 
-          case 13:
+          case 14:
           case "end":
             return _context2.stop();
         }
       }
-    }, _callee2, null, [[0, 10]]);
+    }, _callee2, null, [[0, 11]]);
   }));
 
-  return function getUsers() {
+  return function logoutUser() {
     return _ref2.apply(this, arguments);
   };
 }();
-var getUser = /*#__PURE__*/function () {
-  var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(id) {
+var getUsers = /*#__PURE__*/function () {
+  var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
     var token, response;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
       while (1) {
@@ -34819,7 +34821,7 @@ var getUser = /*#__PURE__*/function () {
             _context3.prev = 0;
             token = Object(_utils_userUtils__WEBPACK_IMPORTED_MODULE_1__["loadJwtLocalStorage"])().token;
             _context3.next = 4;
-            return fetch("".concat(BASE_URL, "users/").concat(id), getOption('GET', null, token));
+            return fetch("".concat(BASE_URL, "users"), getOption('GET', null, token));
 
           case 4:
             response = _context3.sent;
@@ -34842,85 +34844,85 @@ var getUser = /*#__PURE__*/function () {
     }, _callee3, null, [[0, 10]]);
   }));
 
-  return function getUser(_x2) {
+  return function getUsers() {
     return _ref3.apply(this, arguments);
   };
 }();
-var createUser = /*#__PURE__*/function () {
-  var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(user) {
-    var response;
+var getUser = /*#__PURE__*/function () {
+  var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(id) {
+    var token, response;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
       while (1) {
         switch (_context4.prev = _context4.next) {
           case 0:
             _context4.prev = 0;
-            _context4.next = 3;
-            return fetch("".concat(BASE_URL, "auth/singup"), getOption('POST', user));
+            token = Object(_utils_userUtils__WEBPACK_IMPORTED_MODULE_1__["loadJwtLocalStorage"])().token;
+            _context4.next = 4;
+            return fetch("".concat(BASE_URL, "users/").concat(id), getOption('GET', null, token));
 
-          case 3:
+          case 4:
             response = _context4.sent;
-            _context4.next = 6;
+            _context4.next = 7;
             return response.json();
 
-          case 6:
+          case 7:
             return _context4.abrupt("return", _context4.sent);
 
-          case 9:
-            _context4.prev = 9;
+          case 10:
+            _context4.prev = 10;
             _context4.t0 = _context4["catch"](0);
             console.error(_context4.t0);
 
-          case 12:
+          case 13:
           case "end":
             return _context4.stop();
         }
       }
-    }, _callee4, null, [[0, 9]]);
+    }, _callee4, null, [[0, 10]]);
   }));
 
-  return function createUser(_x3) {
+  return function getUser(_x2) {
     return _ref4.apply(this, arguments);
   };
 }();
-var updateUser = /*#__PURE__*/function () {
+var createUser = /*#__PURE__*/function () {
   var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(user) {
-    var token, response;
+    var response;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
       while (1) {
         switch (_context5.prev = _context5.next) {
           case 0:
             _context5.prev = 0;
-            token = Object(_utils_userUtils__WEBPACK_IMPORTED_MODULE_1__["loadJwtLocalStorage"])().token;
-            _context5.next = 4;
-            return fetch("".concat(BASE_URL, "users/").concat(user.id), getOption('PUT', user, token));
+            _context5.next = 3;
+            return fetch("".concat(BASE_URL, "auth/singup"), getOption('POST', user));
 
-          case 4:
+          case 3:
             response = _context5.sent;
-            _context5.next = 7;
+            _context5.next = 6;
             return response.json();
 
-          case 7:
+          case 6:
             return _context5.abrupt("return", _context5.sent);
 
-          case 10:
-            _context5.prev = 10;
+          case 9:
+            _context5.prev = 9;
             _context5.t0 = _context5["catch"](0);
             console.error(_context5.t0);
 
-          case 13:
+          case 12:
           case "end":
             return _context5.stop();
         }
       }
-    }, _callee5, null, [[0, 10]]);
+    }, _callee5, null, [[0, 9]]);
   }));
 
-  return function updateUser(_x4) {
+  return function createUser(_x3) {
     return _ref5.apply(this, arguments);
   };
 }();
-var deleteUser = /*#__PURE__*/function () {
-  var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6(id) {
+var updateUser = /*#__PURE__*/function () {
+  var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6(user) {
     var token, response;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
       while (1) {
@@ -34929,7 +34931,7 @@ var deleteUser = /*#__PURE__*/function () {
             _context6.prev = 0;
             token = Object(_utils_userUtils__WEBPACK_IMPORTED_MODULE_1__["loadJwtLocalStorage"])().token;
             _context6.next = 4;
-            return fetch("".concat(BASE_URL, "users/").concat(id), getOption('DELETE', null, token));
+            return fetch("".concat(BASE_URL, "users/").concat(user.id), getOption('PUT', user, token));
 
           case 4:
             response = _context6.sent;
@@ -34952,8 +34954,45 @@ var deleteUser = /*#__PURE__*/function () {
     }, _callee6, null, [[0, 10]]);
   }));
 
-  return function deleteUser(_x5) {
+  return function updateUser(_x4) {
     return _ref6.apply(this, arguments);
+  };
+}();
+var deleteUser = /*#__PURE__*/function () {
+  var _ref7 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7(id) {
+    var token, response;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+      while (1) {
+        switch (_context7.prev = _context7.next) {
+          case 0:
+            _context7.prev = 0;
+            token = Object(_utils_userUtils__WEBPACK_IMPORTED_MODULE_1__["loadJwtLocalStorage"])().token;
+            _context7.next = 4;
+            return fetch("".concat(BASE_URL, "users/").concat(id), getOption('DELETE', null, token));
+
+          case 4:
+            response = _context7.sent;
+            _context7.next = 7;
+            return response.json();
+
+          case 7:
+            return _context7.abrupt("return", _context7.sent);
+
+          case 10:
+            _context7.prev = 10;
+            _context7.t0 = _context7["catch"](0);
+            console.error(_context7.t0);
+
+          case 13:
+          case "end":
+            return _context7.stop();
+        }
+      }
+    }, _callee7, null, [[0, 10]]);
+  }));
+
+  return function deleteUser(_x5) {
+    return _ref7.apply(this, arguments);
   };
 }();
 
@@ -35025,21 +35064,66 @@ var Gravatar = function Gravatar(_ref) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _utils_userUtils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/userUtils */ "./resources/js/utils/userUtils.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _utils_userUtils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/userUtils */ "./resources/js/utils/userUtils.js");
+/* harmony import */ var _api_usersApi__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../api/usersApi */ "./resources/js/api/usersApi.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
 
 
 
 
 var Header = function Header() {
-  var authData = Object(_utils_userUtils__WEBPACK_IMPORTED_MODULE_2__["loadJwtLocalStorage"])();
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
+  var authData = Object(_utils_userUtils__WEBPACK_IMPORTED_MODULE_3__["loadJwtLocalStorage"])();
+  var history = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["useHistory"])();
+
+  var handleClick = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              _context.next = 3;
+              return Object(_api_usersApi__WEBPACK_IMPORTED_MODULE_4__["logoutUser"])();
+
+            case 3:
+              history.push('/login');
+              _context.next = 9;
+              break;
+
+            case 6:
+              _context.prev = 6;
+              _context.t0 = _context["catch"](0);
+              alert(_context.t0);
+
+            case 9:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[0, 6]]);
+    }));
+
+    return function handleClick() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
+  return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("header", {
     className: "header"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("nav", {
     className: "navbar navbar-expand-lg navbar-light bg-light"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
     className: "navbar-toggler",
     type: "button",
     "data-toggle": "collapse",
@@ -35047,45 +35131,45 @@ var Header = function Header() {
     "aria-controls": "navbarSupportedContent",
     "aria-expanded": "false",
     "aria-label": "Toggle navigation"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
     className: "navbar-toggler-icon"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "collapse navbar-collapse",
     id: "navbarSupportedContent"
-  }, authData && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+  }, authData && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
     className: "navbar-nav mr-auto"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
     className: "nav-item active"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
     className: "nav-link",
     to: "/"
-  }, "Inicio")), authData.is_admin && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+  }, "Inicio")), authData.is_admin && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
     className: "nav-item"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
     className: "nav-link",
     to: "/users"
-  }, "Usuarios")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+  }, "Usuarios")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
     className: "nav-item"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
     className: "nav-link",
     to: "/clients"
-  }, "Clientes"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+  }, "Clientes"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
     className: "navbar-nav my-2 my-lg-0"
-  }, !authData ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+  }, !authData ? react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
     className: "nav-item"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
     className: "nav-link",
     to: "/login"
-  }, "Iniciar Sesi\xF3n")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+  }, "Iniciar Sesi\xF3n")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
     className: "nav-item"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
     className: "nav-link",
     to: "/register"
-  }, "Registrarse"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+  }, "Registrarse"))) : react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
     className: "nav-item"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-    className: "nav-link",
-    to: "/logout"
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+    onClick: handleClick,
+    className: "nav-link"
   }, "Cerrar sesi\xF3n"))))));
 };
 
@@ -35842,7 +35926,7 @@ var Router = function Router() {
 /*!*****************************************!*\
   !*** ./resources/js/utils/userUtils.js ***!
   \*****************************************/
-/*! exports provided: validateNewUser, validateLoginUser, saveJwtLocalStorage, loadJwtLocalStorage */
+/*! exports provided: validateNewUser, validateLoginUser, saveJwtLocalStorage, loadJwtLocalStorage, deleteJwtLocalStorage */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35851,6 +35935,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "validateLoginUser", function() { return validateLoginUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "saveJwtLocalStorage", function() { return saveJwtLocalStorage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loadJwtLocalStorage", function() { return loadJwtLocalStorage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteJwtLocalStorage", function() { return deleteJwtLocalStorage; });
 var validateNewUser = function validateNewUser(_ref) {
   var name = _ref.name,
       email = _ref.email,
@@ -35892,6 +35977,14 @@ var loadJwtLocalStorage = function loadJwtLocalStorage() {
     return undefined;
   }
 };
+var deleteJwtLocalStorage = function deleteJwtLocalStorage() {
+  try {
+    localStorage.removeItem('data');
+    return true;
+  } catch (error) {
+    return false;
+  }
+};
 
 /***/ }),
 
@@ -35913,8 +36006,8 @@ var loadJwtLocalStorage = function loadJwtLocalStorage() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/smarulanda97/Documents/Test/backend-developer-test/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/smarulanda97/Documents/Test/backend-developer-test/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\laragon\www\backend-developer-test\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\backend-developer-test\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

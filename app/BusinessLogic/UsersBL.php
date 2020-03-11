@@ -9,6 +9,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class UsersBL {
@@ -47,6 +48,16 @@ class UsersBL {
     public static function deleteUser($id) {
         $user = UsersAD::deleteUser($id);
         return self::getResponseFromProcces($user);
+    }
+
+    public static function logout(Request $request) {
+        try {
+            $token = JWTAuth::getToken();
+            JWTAuth::invalidate($token);
+            return self::getResponseFromProcces(true);
+        } catch (JWTException $exception) {
+            return self::getResponseFromProcces(false);
+        }
     }
 
     public static function authenticate(Request $request) {

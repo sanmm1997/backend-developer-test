@@ -1,4 +1,4 @@
-import {loadJwtLocalStorage} from "../utils/userUtils";
+import {deleteJwtLocalStorage, loadJwtLocalStorage} from "../utils/userUtils";
 
 const BASE_URL = `http://127.0.0.1:8000/api/v1/`;
 
@@ -25,6 +25,17 @@ const getOption = (method = 'GET', body, token = '') => {
 export const loginUser = async (user) => {
     try {
         const response = await fetch(`${BASE_URL}auth/login`, getOption('POST', user));
+        return await response.json();
+    } catch (e) {
+        console.error(e);
+    }
+};
+
+export const logoutUser = async () => {
+    try {
+        const token = loadJwtLocalStorage().token;
+        const response = await fetch(`${BASE_URL}auth/expire`, getOption('POST', null, token));
+        deleteJwtLocalStorage();
         return await response.json();
     } catch (e) {
         console.error(e);
@@ -59,7 +70,6 @@ export const createUser = async (user) => {
         console.error(e);
     }
 };
-
 
 export const updateUser = async (user) => {
     try {

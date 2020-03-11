@@ -28,3 +28,12 @@ export const loadJwtLocalStorage = () => {
         return undefined;
     }
 };
+
+export const deleteJwtLocalStorage = () => {
+    try {
+        localStorage.removeItem('data');
+        return true;
+    } catch (error) {
+        return false;
+    }
+};

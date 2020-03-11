@@ -18,16 +18,18 @@ class TokensController extends Controller
 
     /**
      * @param Request $request
+     * @return void
      */
-    public function logout(Request $request) {
+    public function refresh(Request $request) {
 
     }
 
     /**
      * @param Request $request
+     * @return JsonResponse
      */
     public function expire(Request $request) {
-
+        return UsersBL::logout($request);
     }
 
 }

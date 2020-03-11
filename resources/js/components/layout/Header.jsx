@@ -1,10 +1,22 @@
 import React from 'react';
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import {loadJwtLocalStorage} from "../../utils/userUtils";
+import {logoutUser} from "../../api/usersApi";
 
 
 const Header = () => {
     const authData = loadJwtLocalStorage();
+    const history = useHistory();
+
+    const handleClick = async () => {
+        try {
+            await logoutUser();
+            history.push('/login');
+        } catch (e) {
+            alert(e);
+        }
+    };
+
     return (
         <header className="header">
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -44,7 +56,10 @@ const Header = () => {
                         )
                         :
                             <li className="nav-item">
-                                <NavLink className="nav-link" to="/logout">Cerrar sesión</NavLink>
+                                <a
+                                    onClick={handleClick}
+                                    className="nav-link"
+                                >Cerrar sesión</a>
                             </li>
                         }
                     </ul>
