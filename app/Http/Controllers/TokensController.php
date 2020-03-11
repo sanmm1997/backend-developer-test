@@ -2,21 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\JsonResponse;
+use App\BusinessLogic\UsersBL;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 
 class TokensController extends Controller
 {
-
     /**
      * @param Request $request
      * @return JsonResponse
      */
     public function login(Request $request) {
-
-        return response()->json([
-            'hello' => 'world'
-        ]);
+        return UsersBL::authenticate($request);
     }
 
     /**

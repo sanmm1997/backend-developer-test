@@ -21,15 +21,28 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['middleware' => ['cors'], 'prefix' => 'v1'], function () {
 
     /**
-     *
-     * Manage JWT token
-     *
+     * Route get JWT token
      */
-    Route::post('auth/login', 'TokensController@login')->name('auth.login');
+    Route::post('auth/login', 'TokensController@login')->name('token.login');
+    /**
+     * Route create new user
+     */
+    Route::post('auth/singup', 'AuthController@singUp')->name('auth.singup');
 
     Route::group(['middleware' => ['jwt.auth']], function () {
-        Route::post('auth/refresh', 'TokensController@refresh')->name('auth.refresh');
-        Route::post('auth/expire', 'TokensController@expire')->name('auth.expire');
+        /**
+         * Manage token
+         */
+        Route::post('auth/refresh', 'TokensController@refresh')->name('token.refresh');
+        Route::post('auth/expire', 'TokensController@expire')->name('token.expire');
+
+        /**
+         * Routes manage crud users
+         */
+        Route::get('users', 'UsersController@index')->name('users.index');
+        Route::get('users/{id}', 'UsersController@show')->name('users.show');
+        Route::put('users/{id}', 'UsersController@update')->name('users.update');
+        Route::delete('users/{id}', 'UsersController@destroy')->name('users.destroy');
     });
 
 });
