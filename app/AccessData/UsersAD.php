@@ -4,6 +4,7 @@ namespace App\AccessData;
 
 use App\User;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UsersAD {
@@ -51,9 +52,10 @@ class UsersAD {
     }
 
     /**
+     * @param Request $request
      * @return User[]|bool|Collection
      */
-    public static function getUsers() {
+    public static function getUsers($param) {
         try {
             /**
              * I dont use query builder for this method, but this is is a query implement with builder
@@ -61,8 +63,11 @@ class UsersAD {
              *  ->whereNull('clients.user_id')
              *  ->get();
              */
-            return User::doesnthave('client')->get();
+            return User::doesntHave('client')
+                ->search($param)
+                ->get();
         } catch (\Exception $exception) {
+            print_r($exception->getMessage());
             return false;
         }
     }

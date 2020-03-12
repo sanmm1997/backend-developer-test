@@ -5,6 +5,7 @@ namespace App\AccessData;
 
 use App\User;
 use App\Client;
+use http\Env\Request;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -15,11 +16,13 @@ class ClientsAD {
     /**
      * @return bool|Builder[]|Collection
      */
-    public static function getClients() {
+    public static function getClients($param) {
         try {
-            return Client::with('user')->get();
+        return Client::with('user')
+            ->search($param)
+            ->orWhere('user_id', '=', DB::raw("(select users.id from users where users.id = clients.user_id and (name like '%{$param}%' or email like '%{$param}%'))"))
+            ->get();
         } catch (\Exception $exception) {
-            print_r($exception->getMessage());
             return false;
         }
     }

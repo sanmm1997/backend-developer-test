@@ -60,4 +60,19 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasOne(Client::class);
     }
 
+    /**
+     * @param $query
+     * @param $param
+     * @return mixed
+     */
+    public function scopeSearch($query, $param) {
+        if (trim($param) === "")
+            return $query;
+
+        return $query->where(function($subQuery) use ($param) {
+            $subQuery->where('name', 'like', "{$param}%");
+            $subQuery->orWhere('email', 'like', "{$param}%");
+        });
+    }
+
 }

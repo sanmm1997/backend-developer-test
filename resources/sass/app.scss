@@ -30,3 +30,15 @@
         color: #ffffffbf;
     }
 }
+
+.Search-bar {
+    input {
+        border-top: none !important;
+        border-left: none !important;
+        border-right: none !important;
+        border-radius: 0 !important;
+        &::placeholder {
+            color: #00000054 !important;
+        }
+    }
+}

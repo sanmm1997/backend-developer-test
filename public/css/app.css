@@ -10906,3 +10906,30 @@ a.text-dark:focus {
   color: #ffffffbf;
 }
 
+.Search-bar input {
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-radius: 0 !important;
+}
+
+.Search-bar input::-webkit-input-placeholder {
+  color: #00000054 !important;
+}
+
+.Search-bar input::-moz-placeholder {
+  color: #00000054 !important;
+}
+
+.Search-bar input:-ms-input-placeholder {
+  color: #00000054 !important;
+}
+
+.Search-bar input::-ms-input-placeholder {
+  color: #00000054 !important;
+}
+
+.Search-bar input::placeholder {
+  color: #00000054 !important;
+}
+

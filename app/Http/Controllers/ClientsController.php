@@ -13,11 +13,12 @@ class ClientsController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return JsonResponse
      */
-    public function index()
+    public function index(Request $request)
     {
-        return ClientsBL::getClients();
+        return ClientsBL::getClients($request);
     }
 
     /**

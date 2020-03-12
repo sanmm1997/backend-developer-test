@@ -34710,7 +34710,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 var getClients = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(searchParams) {
     var token, response;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
       while (1) {
@@ -34719,7 +34719,7 @@ var getClients = /*#__PURE__*/function () {
             _context.prev = 0;
             token = Object(_utils_userUtils__WEBPACK_IMPORTED_MODULE_1__["loadJwtLocalStorage"])().token;
             _context.next = 4;
-            return fetch("".concat(_requestStructure__WEBPACK_IMPORTED_MODULE_2__["BASE_URL"], "clients"), Object(_requestStructure__WEBPACK_IMPORTED_MODULE_2__["getOption"])('GET', null, token));
+            return fetch("".concat(_requestStructure__WEBPACK_IMPORTED_MODULE_2__["BASE_URL"], "clients?param=").concat(searchParams), Object(_requestStructure__WEBPACK_IMPORTED_MODULE_2__["getOption"])('GET', null, token));
 
           case 4:
             response = _context.sent;
@@ -34742,7 +34742,7 @@ var getClients = /*#__PURE__*/function () {
     }, _callee, null, [[0, 10]]);
   }));
 
-  return function getClients() {
+  return function getClients(_x) {
     return _ref.apply(this, arguments);
   };
 }();
@@ -34779,7 +34779,7 @@ var getClient = /*#__PURE__*/function () {
     }, _callee2, null, [[0, 10]]);
   }));
 
-  return function getClient(_x) {
+  return function getClient(_x2) {
     return _ref2.apply(this, arguments);
   };
 }();
@@ -34816,7 +34816,7 @@ var createClient = /*#__PURE__*/function () {
     }, _callee3, null, [[0, 10]]);
   }));
 
-  return function createClient(_x2) {
+  return function createClient(_x3) {
     return _ref3.apply(this, arguments);
   };
 }();
@@ -34853,7 +34853,7 @@ var updateClient = /*#__PURE__*/function () {
     }, _callee4, null, [[0, 10]]);
   }));
 
-  return function updateClient(_x3) {
+  return function updateClient(_x4) {
     return _ref4.apply(this, arguments);
   };
 }();
@@ -34890,7 +34890,7 @@ var deleteClient = /*#__PURE__*/function () {
     }, _callee5, null, [[0, 10]]);
   }));
 
-  return function deleteClient(_x4) {
+  return function deleteClient(_x5) {
     return _ref5.apply(this, arguments);
   };
 }();
@@ -35040,7 +35040,7 @@ var logoutUser = /*#__PURE__*/function () {
   };
 }();
 var getUsers = /*#__PURE__*/function () {
-  var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+  var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(searchParam) {
     var token, response;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
       while (1) {
@@ -35049,7 +35049,7 @@ var getUsers = /*#__PURE__*/function () {
             _context3.prev = 0;
             token = Object(_utils_userUtils__WEBPACK_IMPORTED_MODULE_1__["loadJwtLocalStorage"])().token;
             _context3.next = 4;
-            return fetch("".concat(_requestStructure__WEBPACK_IMPORTED_MODULE_2__["BASE_URL"], "users"), Object(_requestStructure__WEBPACK_IMPORTED_MODULE_2__["getOption"])('GET', null, token));
+            return fetch("".concat(_requestStructure__WEBPACK_IMPORTED_MODULE_2__["BASE_URL"], "users?param=").concat(searchParam), Object(_requestStructure__WEBPACK_IMPORTED_MODULE_2__["getOption"])('GET', null, token));
 
           case 4:
             response = _context3.sent;
@@ -35072,7 +35072,7 @@ var getUsers = /*#__PURE__*/function () {
     }, _callee3, null, [[0, 10]]);
   }));
 
-  return function getUsers() {
+  return function getUsers(_x2) {
     return _ref3.apply(this, arguments);
   };
 }();
@@ -35109,7 +35109,7 @@ var getUser = /*#__PURE__*/function () {
     }, _callee4, null, [[0, 10]]);
   }));
 
-  return function getUser(_x2) {
+  return function getUser(_x3) {
     return _ref4.apply(this, arguments);
   };
 }();
@@ -35145,7 +35145,7 @@ var createUser = /*#__PURE__*/function () {
     }, _callee5, null, [[0, 9]]);
   }));
 
-  return function createUser(_x3) {
+  return function createUser(_x4) {
     return _ref5.apply(this, arguments);
   };
 }();
@@ -35182,7 +35182,7 @@ var updateUser = /*#__PURE__*/function () {
     }, _callee6, null, [[0, 10]]);
   }));
 
-  return function updateUser(_x4) {
+  return function updateUser(_x5) {
     return _ref6.apply(this, arguments);
   };
 }();
@@ -35219,7 +35219,7 @@ var deleteUser = /*#__PURE__*/function () {
     }, _callee7, null, [[0, 10]]);
   }));
 
-  return function deleteUser(_x5) {
+  return function deleteUser(_x6) {
     return _ref7.apply(this, arguments);
   };
 }();
@@ -35280,6 +35280,53 @@ var Gravatar = function Gravatar(_ref) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Gravatar);
+
+/***/ }),
+
+/***/ "./resources/js/components/SearchBar.jsx":
+/*!***********************************************!*\
+  !*** ./resources/js/components/SearchBar.jsx ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var SearchBar = function SearchBar(_ref) {
+  var handleChange = _ref.handleChange,
+      handleClick = _ref.handleClick,
+      param = _ref.param;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    className: "Search-bar mb-3",
+    onSubmit: function onSubmit(e) {
+      return e.preventDefault();
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-row"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-12 col-md-11"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    id: "value",
+    name: "value",
+    type: "text",
+    value: param,
+    className: "form-control",
+    onChange: handleChange,
+    placeholder: "Ingrese el valor a buscar"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-12 col-md-1"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "buttton",
+    onClick: handleClick,
+    className: "btn btn-secondary w-100"
+  }, "Limpiar"))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (SearchBar);
 
 /***/ }),
 
@@ -35985,7 +36032,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _api_clientsApi__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../api/clientsApi */ "./resources/js/api/clientsApi.js");
 /* harmony import */ var _components_clients_ClientItem__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/clients/ClientItem */ "./resources/js/components/clients/ClientItem.jsx");
 /* harmony import */ var _components_clients_ClientsCreateRedirect__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/clients/ClientsCreateRedirect */ "./resources/js/components/clients/ClientsCreateRedirect.jsx");
+/* harmony import */ var _components_SearchBar__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/SearchBar */ "./resources/js/components/SearchBar.jsx");
 
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
@@ -36005,15 +36061,32 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var Clients = function Clients() {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])([]),
       _useState2 = _slicedToArray(_useState, 2),
       clients = _useState2[0],
       setClients = _useState2[1];
 
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(''),
+      _useState4 = _slicedToArray(_useState3, 2),
+      searchParam = _useState4[0],
+      setSearchParam = _useState4[1];
+
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     fetchClients();
   }, []);
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    fetchClients();
+  }, [searchParam]);
+
+  var handleChange = function handleChange(e) {
+    setSearchParam(e.target.value);
+  };
+
+  var handleClick = function handleClick() {
+    setSearchParam('');
+  };
 
   var fetchClients = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
@@ -36023,11 +36096,11 @@ var Clients = function Clients() {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return Object(_api_clientsApi__WEBPACK_IMPORTED_MODULE_3__["getClients"])();
+              return Object(_api_clientsApi__WEBPACK_IMPORTED_MODULE_3__["getClients"])(searchParam);
 
             case 2:
               response = _context.sent;
-              setClients(response.data);
+              setClients(_toConsumableArray(response.data));
 
             case 4:
             case "end":
@@ -36047,6 +36120,14 @@ var Clients = function Clients() {
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "col-12 text-center"
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h1", null, "Listado de clientes"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: "row"
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: "col-12"
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_SearchBar__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    param: searchParam,
+    handleChange: handleChange,
+    handleClick: handleClick
+  }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "row"
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("table", {
     className: "table table-striped"
@@ -36463,6 +36544,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_layout_List__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/layout/List */ "./resources/js/components/layout/List.jsx");
 /* harmony import */ var _api_usersApi__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../api/usersApi */ "./resources/js/api/usersApi.js");
 /* harmony import */ var _components_users_UserItem__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/users/UserItem */ "./resources/js/components/users/UserItem.jsx");
+/* harmony import */ var _components_SearchBar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/SearchBar */ "./resources/js/components/SearchBar.jsx");
 
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
@@ -36490,15 +36572,24 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var Users = function Users(props) {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])([]),
       _useState2 = _slicedToArray(_useState, 2),
       users = _useState2[0],
       setUsers = _useState2[1];
 
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(''),
+      _useState4 = _slicedToArray(_useState3, 2),
+      searchParam = _useState4[0],
+      setSearchParam = _useState4[1];
+
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     fetchUsers();
   }, []);
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    fetchUsers();
+  }, [searchParam]);
 
   var fetchUsers = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
@@ -36508,7 +36599,7 @@ var Users = function Users(props) {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return Object(_api_usersApi__WEBPACK_IMPORTED_MODULE_3__["getUsers"])();
+              return Object(_api_usersApi__WEBPACK_IMPORTED_MODULE_3__["getUsers"])(searchParam);
 
             case 2:
               response = _context.sent;
@@ -36527,11 +36618,27 @@ var Users = function Users(props) {
     };
   }();
 
+  var handleChange = function handleChange(e) {
+    setSearchParam(e.target.value);
+  };
+
+  var handleClick = function handleClick() {
+    setSearchParam('');
+  };
+
   return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "row pb-3"
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "col-12 text-center"
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h1", null, "Listado de usuarios"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: "row"
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: "col-12"
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_SearchBar__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    param: searchParam,
+    handleChange: handleChange,
+    handleClick: handleClick
+  }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "row"
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("table", {
     className: "table table-striped"
@@ -36859,8 +36966,8 @@ var deleteJwtLocalStorage = function deleteJwtLocalStorage() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/smarulanda97/Documents/Test/backend-developer-test/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/smarulanda97/Documents/Test/backend-developer-test/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\laragon\www\backend-developer-test\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\backend-developer-test\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

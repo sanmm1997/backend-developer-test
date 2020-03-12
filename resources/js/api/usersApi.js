@@ -21,10 +21,10 @@ export const logoutUser = async () => {
     }
 };
 
-export const getUsers = async () => {
+export const getUsers = async (searchParam) => {
     try {
         const token = loadJwtLocalStorage().token;
-        const response = await fetch(`${BASE_URL}users`, getOption('GET', null, token));
+        const response = await fetch(`${BASE_URL}users?param=${searchParam}`, getOption('GET', null, token));
         return await response.json();
     } catch (e) {
         console.error(e)

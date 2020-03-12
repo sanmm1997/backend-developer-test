@@ -28,8 +28,8 @@ class ClientsBL {
      *
      *
      */
-    public static function getClients() {
-        $clients = ClientsAD::getClients();
+    public static function getClients(Request $request) {
+        $clients = ClientsAD::getClients($request->get('param'));
         return self::getResponseFromProcces(!(is_bool($clients) && !$clients), $clients);
     }
 

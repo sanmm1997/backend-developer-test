@@ -12,11 +12,12 @@ class UsersController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return JsonResponse
      */
-    public function index()
+    public function index(Request $request)
     {
-        return UsersBL::getUsers();
+        return UsersBL::getUsers($request);
     }
 
     /**

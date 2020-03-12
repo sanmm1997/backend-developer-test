@@ -1,10 +1,10 @@
 import {loadJwtLocalStorage} from "../utils/userUtils";
 import {BASE_URL, getOption} from "./requestStructure";
 
-export const getClients = async () => {
+export const getClients = async (searchParams) => {
     try {
         const token = loadJwtLocalStorage().token;
-        const response = await fetch(`${BASE_URL}clients`, getOption('GET', null, token));
+        const response = await fetch(`${BASE_URL}clients?param=${searchParams}`, getOption('GET', null, token));
         return await response.json();
     } catch (e) {
         console.error(e)
