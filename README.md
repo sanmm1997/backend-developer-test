@@ -35,7 +35,7 @@ Por favor siga las instrucciones de intalación para lanzar el proyecto.
     5. php artisan config:cache
     6. php artisan migrate
     7. php artisan db:seed
-6. Inicie el servidor para ver el proyecto con el comando "php artisan serve". 
+6. Inicie el servidor para ver el proyecto con el comando "php artisan serve --port=8000". 
 7. Valide que el proyecto se lanzó en http://localhost:8000 y abra la URL en su navegador web.
 
 
