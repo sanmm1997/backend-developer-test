@@ -21,7 +21,7 @@ class UsersBL {
      */
     use ResponseTrait;
 
-       public static function getUsers() {
+    public static function getUsers() {
         $users = UsersAD::getUsers();
         return self::getResponseFromProcces(!$users->isEmpty(), $users);
     }

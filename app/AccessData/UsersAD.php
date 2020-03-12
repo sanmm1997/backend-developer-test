@@ -2,7 +2,6 @@
 
 namespace App\AccessData;
 
-
 use App\User;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -52,7 +51,13 @@ class UsersAD {
      */
     public static function getUsers() {
         try {
-            return User::all();
+            /**
+             * I dont use query builder for this method, but this is is a query implement with builder
+             * User::leftJoin('clients', 'clients.user_id', '=', 'users.id')
+             *  ->whereNull('clients.user_id')
+             *  ->get();
+             */
+            return User::doesnthave('client')->get();
         } catch (\Exception $exception) {
             return false;
         }

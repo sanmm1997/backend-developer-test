@@ -24,8 +24,12 @@ const Login = (props) => {
         validateLoginUser(user)
             .then(result => result ? loginUser(user) : alert('Uppsss!! Toda la información es requerida'))
             .then(response => {
-                if (saveJwtLocalStorage(response.data))
+                if (response.status === 200) {
+                    saveJwtLocalStorage(response.data);
                     props.history.push("/");
+                } else {
+                    alert('Los datos son incorrrectos');
+                }
             })
     };
 

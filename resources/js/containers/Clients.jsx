@@ -1,26 +1,27 @@
 import React, { useState, useEffect } from "react";
 import List from "../components/layout/List";
 
-import {getUsers} from "../api/usersApi";
-import UserItem from "../components/users/UserItem";
+import {getClients} from "../api/clientsApi";
+import ClientItem from "../components/clients/ClientItem";
+import ClientsCreateRedirect from "../components/clients/ClientsCreateRedirect";
 
-const Users = (props) => {
-    const [users, setUsers] = useState([]);
+const Clients = () => {
+    const [clients, setClients] = useState([]);
 
     useEffect(() => {
-        fetchUsers();
+        fetchClients();
     }, []);
 
-    const fetchUsers = async () => {
-        const response = await getUsers();
-        setUsers(response.data);
+    const fetchClients = async () => {
+        const response = await getClients();
+        setClients(response.data);
     };
 
     return (
         <>
             <div className="row pb-3">
                 <div className="col-12 text-center">
-                    <h1>Listado de usuarios</h1>
+                    <h1>Listado de clientes</h1>
                 </div>
             </div>
             <div className="row">
@@ -31,20 +32,23 @@ const Users = (props) => {
                         <th>Imagen</th>
                         <th>Nombre</th>
                         <th>Email</th>
+                        <th>Edad</th>
+                        <th>Teléfono</th>
                         <th>Opciones</th>
                     </tr>
                     </thead>
                     <tbody>
                     <List
                         colMd={4}
-                        items={users}
-                        render={(user) => <UserItem user={user}/>
-                        }/>
+                        items={clients}
+                        render={(client) => <ClientItem client={client}/> }
+                    />
                     </tbody>
                 </table>
+                <ClientsCreateRedirect />
             </div>
         </>
     )
 };
 
-export default Users;
+export default Clients;

@@ -12,6 +12,8 @@
     <body>
         <div id="root">
         </div>
+        <div id="portal">
+        </div>
 
         <script src="{{ asset('js/app.js') }}"></script>
     </body>

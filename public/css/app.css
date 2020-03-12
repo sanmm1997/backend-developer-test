@@ -10882,3 +10882,27 @@ a.text-dark:focus {
   }
 }
 
+.ClientsCreateRedirect {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  right: 40px;
+  background-color: #755dbbd1;
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  box-shadow: 3px 3px 4px #666666b8;
+  transition-duration: 1s;
+}
+
+.ClientsCreateRedirect:hover {
+  transform: scale(1.1) rotate(15deg);
+}
+
+.ClientsCreateRedirect i {
+  font-size: 2em;
+  padding: 14px;
+  color: #ffffffbf;
+}
+
