@@ -13,7 +13,7 @@ const Users = (props) => {
 
     const fetchUsers = async () => {
         const response = await getUsers();
-        setUsers(response.data);
+        setUsers([...response.data]);
     };
 
     return (

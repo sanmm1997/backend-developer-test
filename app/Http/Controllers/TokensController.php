@@ -19,10 +19,10 @@ class TokensController extends Controller
 
     /**
      * @param Request $request
-     * @return void
+     * @return JsonResponse
      */
-    public function refresh(Request $request) {
-
+    public function verify(Request $request) {
+        return TokensBL::verify($request);
     }
 
     /**

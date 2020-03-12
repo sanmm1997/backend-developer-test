@@ -24,6 +24,7 @@ Route::group(['middleware' => ['cors'], 'prefix' => 'v1'], function () {
      * Route get JWT token
      */
     Route::post('auth/login', 'TokensController@login')->name('token.login');
+    Route::post('auth/verify', 'TokensController@verify')->name('token.verify');
     /**
      * Route create new user
      */
@@ -33,7 +34,6 @@ Route::group(['middleware' => ['cors'], 'prefix' => 'v1'], function () {
         /**
          * Manage token
          */
-        Route::post('auth/refresh', 'TokensController@refresh')->name('token.refresh');
         Route::post('auth/expire', 'TokensController@expire')->name('token.expire');
 
         /**

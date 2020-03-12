@@ -6,12 +6,10 @@ namespace App\BusinessLogic;
 
 use App\AccessData\UsersAD;
 use App\Traits\ResponseTrait;
-use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\Exceptions\TokenExpiredException;
+use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class TokensBL
@@ -23,6 +21,20 @@ class TokensBL
             $token = JWTAuth::getToken();
             JWTAuth::invalidate($token);
             return self::getResponseFromProcces(true);
+        } catch (JWTException $exception) {
+            return self::getResponseFromProcces(false);
+        }
+    }
+
+    public static function verify(Request $request) {
+        try {
+            if (!$user = JWTAuth::parseToken()->authenticate())
+                return self::getResponseFromProcces(false);
+            return self::getResponseFromProcces(true, ['user' => $user]);
+        } catch (TokenExpiredException $exception) {
+            return self::getResponseFromProcces(false);
+        } catch (TokenInvalidException $exception) {
+            return self::getResponseFromProcces(false);
         } catch (JWTException $exception) {
             return self::getResponseFromProcces(false);
         }
