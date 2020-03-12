@@ -29,12 +29,14 @@ Por favor siga las instrucciones de intalación para lanzar el proyecto.
 4. Desde la terminal de comandos diríjase a la carpeta en la que clonó el repositorio.
 5. Ejecute los siguientes comandos:
     1. composer install
-    2. npm install && npm run prod
-    3. php artisan key:generate
-    4. php artisan jwt:secret
-    5. php artisan config:cache
-    6. php artisan migrate
-    7. php artisan db:seed
+    2. npm install
+    3. **Si falla el comando anterior** ejecutar "rm -rf node_modules/" y después volver a ejecutar "npm install" 
+    4. npm run production
+    5. php artisan key:generate
+    6. php artisan jwt:secret
+    7. php artisan config:cache
+    8. php artisan migrate
+    9. php artisan db:seed
 6. Inicie el servidor para ver el proyecto con el comando "php artisan serve --port=8000". 
 7. Valide que el proyecto se lanzó en http://localhost:8000 y abra la URL en su navegador web.
 
