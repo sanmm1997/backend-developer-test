@@ -14,7 +14,14 @@ const Router = () => {
         <BrowserRouter>
             <Layout>
                 <Switch>
-                    <Route exact path="/" component={() => <h1>Ruta 1</h1>}/>
+                    <Route exact path="/" component={() => (
+                        <div className="row">
+                            <div className="col-12 text-center">
+                                <h1>Prueba Backend Developer</h1>
+                                <p>Esta prueba es Desarrollada por Santiago Marulanda</p>
+                            </div>
+                        </div>
+                    )}/>
                     <Route exact path="/register" component={Register}/>
                     <Route exact path="/register/client" component={ClientsRegister}/>
                     <Route exact path="/login" component={Login}/>
