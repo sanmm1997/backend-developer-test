@@ -4,9 +4,13 @@ namespace App\AccessData;
 
 use App\User;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Auth;
 
 class UsersAD {
 
+    public static function authenticateUser($credentials) {
+        return Auth::attempt($credentials);
+    }
     /**
      * @param $userData
      * @return bool

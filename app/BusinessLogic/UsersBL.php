@@ -50,34 +50,4 @@ class UsersBL {
         return self::getResponseFromProcces($user);
     }
 
-    public static function logout(Request $request) {
-        try {
-            $token = JWTAuth::getToken();
-            JWTAuth::invalidate($token);
-            return self::getResponseFromProcces(true);
-        } catch (JWTException $exception) {
-            return self::getResponseFromProcces(false);
-        }
-    }
-
-    public static function authenticate(Request $request) {
-        $credentials = $request->only('email', 'password');
-
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
-
-        if ($validator->fails())
-            return self::getResponseFromProcces(false, []);
-
-        $token = JWTAuth::attempt($credentials);
-
-        return self::getResponseFromProcces($token, [
-            'token' => $token,
-            'user' => UsersAD::getUserByEmail($credentials['email']),
-            'is_admin' => ($request->get('role') === 'admin')
-        ]);
-    }
-
 }
