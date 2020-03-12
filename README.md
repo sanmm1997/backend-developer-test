@@ -30,7 +30,7 @@ Por favor siga las instrucciones de intalación para lanzar el proyecto.
 5. Ejecute los siguientes comandos:
     1. composer install
     2. npm install
-    3. **Si falla el comando anterior** volver a ejecutar "npm install" 
+    3. **Si falla el comando anterior** ejecutar "rm -rf node_modules/" y después volver a ejecutar "npm install" 
     4. npm run prod
     5. php artisan key:generate
     6. php artisan jwt:secret
